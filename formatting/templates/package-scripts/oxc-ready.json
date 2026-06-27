@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint . --fix",
+    "check": "pnpm format:check && pnpm lint"
+  }
+}
