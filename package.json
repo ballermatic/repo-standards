@@ -3,7 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "audit:formatting": "node formatting/scripts/audit-formatting.mjs .",
-    "apply:formatting": "node formatting/scripts/apply-formatting-standard.mjs --variant oxc-ready --target . --dry-run"
+    "apply:formatting": "node formatting/scripts/apply-formatting-standard.mjs --variant oxc-ready --target . --dry-run",
+    "check": "pnpm format:check && pnpm audit:formatting"
+  },
+  "devDependencies": {
+    "prettier": "latest"
   }
 }
