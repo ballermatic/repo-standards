@@ -40,6 +40,8 @@ Audit a repo:
 node formatting/scripts/audit-formatting.mjs /path/to/repo
 ```
 
+For configless repos that will be edited by coding agents, apply a Stage 1 baseline before substantial work. If no checked-in formatter contract exists, agents should not auto-format; they should report the gap and keep any baseline config change separate from behavior changes.
+
 ## Current default posture
 
 - Prettier remains the default formatter.

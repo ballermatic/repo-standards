@@ -25,6 +25,19 @@ Use `baseline/oxc-ready` for modern Vite, Astro, React, and TypeScript repos whe
 
 Use `baseline/prettier-first` for simpler repos or documentation repos.
 
+## Agent formatter fallback prevention
+
+A repo with source files but no checked-in formatter contract is not safe for automatic agent formatting. Agent harnesses, editors, or language tools may fall back to personal defaults and create indentation or wrapping churn that looks like real work.
+
+Before substantial agent work in a JavaScript or TypeScript repo, adopt at least Stage 1:
+
+- `.editorconfig` with `indent_style = space` and `indent_size = 2`.
+- `.prettierrc.json` or the repo's chosen local formatter config.
+- `format:check` and, where useful, `check` package scripts.
+- an `AGENTS.md` formatting section that forbids global formatter defaults.
+
+Do not mix this baseline with product, refactor, or documentation changes.
+
 ## Stable command contract
 
 Repos should expose these script names when applicable:

@@ -88,6 +88,19 @@ Agents should:
 - Format touched files only during feature work.
 - Keep formatting-only work isolated.
 
+## Agent formatter fallback prevention
+
+A configless repo is a known failure mode for coding agents. If a repo lacks `.editorconfig`, local formatter config, and stable format scripts, agents and editor integrations may fall back to global defaults and rewrite indentation or wrapping after the intended work is done.
+
+For agent-operated repos, add a Stage 1 formatting baseline before substantial agent work:
+
+- `.editorconfig` sets spaces and two-space indentation unless the repo documents another choice.
+- A local formatter config, such as `.prettierrc.json`, defines formatter behavior for owned file types.
+- Package or task scripts expose check-only commands such as `format:check` and `check`.
+- `AGENTS.md` tells agents not to use fallback formatter defaults.
+
+If no checked-in formatting contract exists, agents must not auto-format. They should report the gap and either ask for approval or apply the Stage 1 baseline in a separate commit or PR. Never commit formatter output produced by an agent-global or editor-global default.
+
 ## Portability rule
 
 Standardize posture, file names, script names, and agent behavior.
